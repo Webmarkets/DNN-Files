@@ -9,9 +9,17 @@ project
 │   portals.css   
 │
 └───Scripts
-│   │   start.js
 │   │
+│   │
+│   └───global
+│   │   │
+│   │   └───start
+│   │   │       start.js
+│   │   └───delayed_load
+│   │   │       delayed_load.js
+│   │   └───schema_generator
+│   │   │       schema_generator.js
+│   │   │
 │   └───plugins
-│       │   delayed_load.js
-│       │   schema_generator.js
+│   │   │
 ```
