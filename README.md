@@ -23,6 +23,8 @@ project
 │   │   │
 │   └───plugins
 │   │   │
+│   │   └───background_video
+│   │   │       back_video.js
 │   │   └───carousel
 │   │   │       carousel.js
 │   │   └───popup
