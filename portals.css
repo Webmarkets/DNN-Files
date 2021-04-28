@@ -1,0 +1,235 @@
+/* -- CSS Navigation --
+		To nagivate this CSS file, simply Search (CTRL + F) 		
+		
+    Table of Contents:
+	1) DNN Fixes
+    2) Global Styles
+    3) 404 Styles
+    4) Home Styles
+    5) Internal Page Styles
+    6) Blog Styles
+    7) Media Queries
+    
+/* 
+
+
+/* 1) DNN Fixes */
+
+.dummy-space {
+  display: none;
+}
+
+/* 2) Global Styles ex. global typography, buttons, variables, anchor links, section backgrounds */
+
+/* DNN Theme Plugin Variables
+    
+    --accent-color: #000000;
+    --accent-color2: #000000;
+    --accent-color3: #000000;
+    --accent-color4: #000000; 
+    */
+
+/* 3) 404 Styles */
+.fourohfour {
+  font-size: 10em;
+  line-height: 1.2;
+}
+.error {
+  font-size: 5em;
+  line-height: 1.2;
+}
+.not_found {
+  font-size: 3em;
+  line-height: 1.2;
+}
+.ty-title {
+  font-size: 6em;
+  line-height: 1.2;
+}
+.ty-subtitle {
+  font-size: 3em;
+  line-height: 1.2;
+}
+
+/* 4) Home Styles (some of these might be used elsewhere) */
+
+/* 5) Internal Page Styles */
+
+.int-hero {
+}
+.int-content {
+}
+.int-content h1 {
+}
+
+/* 6) Blog Styles */
+
+.blog-content {
+  padding: 20px 5px;
+}
+.blog-content img {
+  padding: 20px 0 10px 0;
+}
+.blog-content em {
+  text-align: center;
+  margin: auto;
+  font-size: 18px;
+}
+.blog-timeline2-detail .detail-title {
+  font-size: 38px !important;
+}
+.blog-content h2 {
+  padding-top: 15px;
+  font-size: 34px;
+}
+.blog-content h3 {
+  padding-top: 15px;
+  font-size: 30px;
+}
+.blog-content h4 {
+  margin-top: 10px;
+  font-size: 28px;
+}
+.blog-content h5 {
+  margin-top: 10px;
+  font-size: 24px;
+}
+.blog-content h6 {
+  margin-top: 10px;
+  font-size: 22px;
+}
+.blog-content li {
+  font-size: 18px;
+}
+.blog-content dt {
+  padding: 10px 0;
+  font-size: 21px;
+}
+.blog-content dt:before {
+  display: inline-block;
+  content: '';
+  height: 10px;
+  margin-right: 10px;
+  background-color: #000;
+  width: 10px;
+}
+.blog-content dd {
+  margin-left: 40px;
+}
+.blog-section {
+  padding: 0 55px;
+}
+.blog-content .row .row-content {
+  padding: 20px 0;
+}
+.blog-content .blog-quote {
+  background-color: #f6f6f6;
+  padding: 40px;
+  margin: 40px 0;
+}
+.header h1 {
+  padding: 35px;
+  border: 1px solid #212529;
+  margin-top: 60px;
+}
+.constrain {
+  width: 100%;
+}
+
+/* 7) Media Queries */
+
+@media only screen and (min-width: 1921px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (min-width: 1600px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 1600px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 1366px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 1200px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 992px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 768px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  .ty-title {
+    font-size: 4em;
+  }
+  .ty-subtitle {
+    font-size: 2em;
+  }
+  .fourohfour {
+    font-size: 5em;
+  }
+  .error {
+    font-size: 3em;
+  }
+  .not_found {
+    font-size: 2em;
+  }
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 599px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 479px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
+@media only screen and (max-width: 379px) {
+  /* 1) DNN Fixes */
+  /* 2) Global Styles */
+  /* 3) 404 Styles */
+  /* 4) Home Styles */
+  /* 5) Internal Page Styles */
+  /* 6) Blog Styles */
+}
