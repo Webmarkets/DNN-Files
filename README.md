@@ -9,11 +9,9 @@ project
 │   portals.css   
 │
 └───Scripts
-│   │   file011.txt
-│   │   file012.txt
+│   │   start.js
 │   │
-│   └───subfolder1
-│       │   file111.txt
-│       │   file112.txt
-│       │   ...
+│   └───plugins
+│       │   delayed_load.js
+│       │   schema_generator.js
 ```
