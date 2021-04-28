@@ -4,18 +4,15 @@ let altActiveSize = "";
 let webP = true;
 let pageLoaded = false;
 let webPLoaded = false;
-export default {
-  async loadStart() {
-    window.addEventListener("load", () => {
-      pageLoaded = true;
-      setBackgrounds();
-      setImgs();
-    });
-    canUseWebP();
-    setLinks();
-  }
+function loadStart() {
+  window.addEventListener("load", () => {
+    pageLoaded = true;
+    setBackgrounds();
+    setImgs();
+  });
+  canUseWebP();
+  setLinks();
 }
-
 function canUseWebP() {
   if (window.innerWidth < 1440) {
     attrSize = "-m";
@@ -163,3 +160,4 @@ function setPriorityBackgrounds() {
     }
   }
 }
+loadStart();
