@@ -75,3 +75,15 @@ ___
   </div>
 </div>
 ```
+
+If .webp images are not loading update the webconfig file with the following
+
+```aspx
+<configuration> 
+    <system.webServer> 
+        <staticContent> 
+            <mimeMap fileExtension=".webp" mimeType="image/webp" /> 
+        </staticContent> 
+    </system.webServer> 
+</configuration>
+```
