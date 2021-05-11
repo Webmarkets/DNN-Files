@@ -12,7 +12,7 @@ This script defers the loading of images until after all the important elements 
     <body>
       ...
       <!-- This is the same for DNN -->
-      <script src="https://cdn.jsdelivr.net/gh/Webmarkets/delayed-load/delayed_load.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/Webmarkets/DNN-Files/Scripts/global/delayed_load/delayed_load.min.js"></script>
     </body>
     ```
 ## Implementation
