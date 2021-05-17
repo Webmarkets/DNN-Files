@@ -32,6 +32,11 @@ ___
         ```html
         <div class="img-back" bg-img="/portals/0/images/logo.png"></div>
         ```
+    + ### Lazy Loading
+        Implementing lazy loading is almost identical to deferring images; instead of using the `delay` attribute, you use a `lazy-src` attribute in place of the standard `src` attribute. Make sure to add the `lazy-load` class as well. This feature was built with iframes in mind, so it won't work for a few cirumstances. Let me know if you'd like any features added to this.
+        ```html
+        <iframe class="lazy-load" lazy-src="url"></iframe>
+        ```
 3. Settings for delayed images:
     + ### Image size breakpoints:
         There are two breakpoints in this plugin: `sm` at 992px and `md` at 1440px. The breakpoint `sm` is interchangeable with the `s`, and the breakpoint `md` with `m` when placing in the `alt-size` attribute. Include each breakpoint you want this image to display differently in the `alt-size` attribute, with a space separating the `sm` and `md` indicators. Alternate images at the `md` breakpoint will need to have '-m' appended to the end of their url for both the standard and webp versions of the image. For images with a breakpoint at `sm` you'll need to append '-s' to the end of the source image's url.
@@ -59,6 +64,7 @@ ___
         </div>
         ```
         If these features aren't important, you may want to simply use the `src` attribute for images instead.
+
 ___
 ## Customization
   Because this plugin only supplements basic HTML and CSS functions, any customization you would normally be able to do should still be viable.

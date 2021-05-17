@@ -4,14 +4,32 @@ let altActiveSize = "";
 let webP = true;
 let pageLoaded = false;
 let webPLoaded = false;
+let lazyCoords = [];
 function loadStart() {
   window.addEventListener("load", () => {
     pageLoaded = true;
     setBackgrounds();
     setImgs();
   });
+  let lazy = document.getElementsByClassName("lazy-load");
+  for (let i = 0; i < lazy.length; i++) {
+    lazyCoords[i] = { loaded: false, offset: lazy[i].offsetTop, elem: lazy[i] };
+  }
+  window.addEventListener("scroll", handleScroll, { passive: true });
   canUseWebP();
   setLinks();
+}
+/**
+ * 
+ * @param {Event} e 
+ */
+function handleScroll(e) {
+  lazyCoords.forEach(coord => {
+    if (!coord.loaded && Math.abs(window.scrollY - coord.offset) <= 800) {
+      coord.elem.setAttribute("src", coord.elem.getAttribute("lazy-src"));
+      coord.loaded = true;
+    }
+  })
 }
 function canUseWebP() {
   if (window.innerWidth < 1440) {
@@ -27,6 +45,7 @@ function canUseWebP() {
   let elem = document.createElement("img");
   elem.src = "data:image/webp;base64,UklGRh4AAABXRUJQVlA4TBEAAAAvAAAAAAfQ//73v/+BiOh/AAA=";
   elem.onload = function () {
+
     webPLoaded = true;
     setPriorityImgs();
     setPriorityBackgrounds();
@@ -75,6 +94,7 @@ async function setImgs() {
 async function setPriorityImgs() {
   let delayedImgs = document.getElementsByTagName("img");
   for (let i = 0; i < delayedImgs.length; i++) {
+
     if (delayedImgs[i].getAttribute("priority")) {
       let newUrl = delayedImgs[i].getAttribute("delay");
       if (newUrl) {
