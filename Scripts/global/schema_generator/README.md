@@ -1,4 +1,4 @@
-# Carousel
+# Schema Generator
 ## Description
   This script generates a carousel with a given number of active slides, and allows user input or automatic rotating.
 ## Installation

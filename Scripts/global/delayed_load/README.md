@@ -7,6 +7,10 @@ This script defers the loading of images until after all the important elements 
 ## Installation
 1. Enter the site's files using FTP or another explorer. Go to the root directory, typically located at '/httpdocs.'
 2. Open the *Default.aspx* file with your editor of choice. Find the closing `<body>` tag, and just above it place the script tag for this module.
+    ### Tag:
+    ```html
+      <script src="https://cdn.jsdelivr.net/gh/Webmarkets/DNN-Files/Scripts/global/delayed_load/delayed_load.min.js"></script>
+    ```
     ### Example:
     ```html
     <body>

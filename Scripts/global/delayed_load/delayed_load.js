@@ -4,32 +4,23 @@ let altActiveSize = "";
 let webP = true;
 let pageLoaded = false;
 let webPLoaded = false;
-let lazyCoords = [];
+const onIntersection = (lazyElems) => {
+  for (const lazyElem of lazyElems) {
+    if (lazyElem.isIntersecting && !lazyElem.target.getAttribute("src")) {
+      lazyElem.target.setAttribute("src", lazyElem.target.getAttribute("lazy-src"));
+    }
+  }
+}
 function loadStart() {
   window.addEventListener("load", () => {
     pageLoaded = true;
     setBackgrounds();
     setImgs();
   });
-  let lazy = document.getElementsByClassName("lazy-load");
-  for (let i = 0; i < lazy.length; i++) {
-    lazyCoords[i] = { loaded: false, offset: lazy[i].offsetTop, elem: lazy[i] };
-  }
-  window.addEventListener("scroll", handleScroll, { passive: true });
   canUseWebP();
   setLinks();
-}
-/**
- * 
- * @param {Event} e 
- */
-function handleScroll(e) {
-  lazyCoords.forEach(coord => {
-    if (!coord.loaded && Math.abs(window.scrollY - coord.offset) <= 800) {
-      coord.elem.setAttribute("src", coord.elem.getAttribute("lazy-src"));
-      coord.loaded = true;
-    }
-  })
+  const observer = new IntersectionObserver(onIntersection);
+  observer.observe(document.querySelector('.lazy-load'));
 }
 function canUseWebP() {
   if (window.innerWidth < 1440) {
