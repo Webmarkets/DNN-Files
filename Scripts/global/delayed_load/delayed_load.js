@@ -6,7 +6,7 @@ let pageLoaded = false;
 let webPLoaded = false;
 const onIntersection = (lazyElems) => {
   for (const lazyElem of lazyElems) {
-    if (lazyElem.isIntersecting && !lazyElem.target.getAttribute("src")) {
+    if (!lazyElem.target.getAttribute("src")) {
       lazyElem.target.setAttribute("src", lazyElem.target.getAttribute("lazy-src"));
     }
   }
@@ -20,7 +20,10 @@ function loadStart() {
   canUseWebP();
   setLinks();
   const observer = new IntersectionObserver(onIntersection);
-  observer.observe(document.querySelector('.lazy-load'));
+  const lazyElems = document.getElementsByClassName("lazy-load");
+  for (const lazyElem of lazyElems) {
+    observer.observe(lazyElem);
+  }
 }
 function canUseWebP() {
   if (window.innerWidth < 1440) {
