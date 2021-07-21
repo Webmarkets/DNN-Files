@@ -33,4 +33,4 @@ project
 │   │   │       text_slider.js
 ```
 
-Note: each repo has it's own README.md for instructions on how to use it
+Note: each plugin has it's own README.md for instructions on how to use it
