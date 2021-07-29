@@ -55,7 +55,6 @@ function formatDate(date) {
     second = "0" + second;
   }
   return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
-
 }
 if (blog) {
   const blogHead = document.getElementById("detail-title").textContent;
