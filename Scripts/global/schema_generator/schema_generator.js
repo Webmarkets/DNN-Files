@@ -3,6 +3,7 @@ let head = document.getElementsByTagName("head")[0];
 let title = document.getElementsByTagName("title")[0].textContent.trim();
 let desc = document.getElementById("MetaDescription").getAttribute("content").trim();
 let twitterDesc = desc;
+let blog = false;
 let address = {
   streetAddress: "6094 W. Emerald Street",
   locality: "Boise",
@@ -10,58 +11,101 @@ let address = {
   postalCode: "83704",
   country: "US"
 }
-let pageName = "page name";
-// let pageName = await document.getElementsByTagName("h1")[0].textContent.trim();
-// pageName = superTrim(pageName);
+let url = window.location.href;
+if (url.match("blog")) {
+  blog = true;
+}
+let pageName = document.getElementsByTagName("h1")[0].textContent.trim();
+pageName = superTrim(pageName);
 
 while (twitterDesc.length > 200) {
   twitterDesc = twitterDesc.substring(0, twitterDesc.lastIndexOf(" "));
   twitterDesc += "...";
 }
 let scripts = head.getElementsByTagName("script");
-let inserting = true;
-for (let i = 0; i < scripts.length; i++) {
-  if (scripts[i].getAttribute("type") == "application/ld+json") {
-    inserting = false;
+// for (let i = 0; i < scripts.length; i++) {
+//   if (scripts[i].getAttribute("type") == "application/ld+json") {
+//     inserting = false;
+// }
+// }
+/**
+ * 
+ * @param {Date} date 
+ */
+function formatDate(date) {
+  let year = date.getUTCFullYear().toString();
+  let month = (date.getUTCMonth() + 1).toString();
+  let day = date.getUTCDay().toString();
+  let hour = date.getUTCHours().toString();
+  let minute = date.getUTCMinutes().toString();
+  let second = date.getUTCSeconds().toString();
+  if (month.length < 2) {
+    month = "0" + month;
   }
+  if (day.length < 2) {
+    day = "0" + day;
+  }
+  if (hour.length < 2) {
+    hour = "0" + hour;
+  }
+  if (minute.length < 2) {
+    minute = "0" + minute;
+  }
+  if (second.length < 2) {
+    second = "0" + second;
+  }
+  return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
+
 }
-if (inserting) {
-  head.innerHTML = `<!--Schema, OG and Twitter Cards automatically generated-->
-      <meta name="twitter:card" content="summary">
-      <meta name="twitter:title" content="${pageName}">
-      <meta name="twitter:description" content="${desc}">
-      <meta name="twitter:image" content="${imageUrl}">
-      <meta name="twitter:image:alt" content="${title}">
-      <meta property="og:type" content="business.business">
-      <meta property="og:title" content="${pageName}">
-      <meta property="og:url" content="${window.location.href}">
-      <meta property="og:image" content="${imageUrl}">
-      <meta property="og:description" content="${desc}">
-      <meta property="business:contact_data:street_address" content="${address.streetAddress}">
-      <meta property="business:contact_data:locality" content="${address.locality}">
-      <meta property="business:contact_data:region" content="${address.region}">
-      <meta property="business:contact_data:postal_code" content="${address.postalCode}">
-      <meta property="business:contact_data:country_name" content="${address.country}">
-      <script type="application/ld+json">
-        {
-          "@context": "https://schema.org",
-          "@type": "Otolaryngologic",
-          "name": "${pageName}",
-          "image": "${imageUrl}",
-          "@id": "${window.location.href}",
-          "url": "${window.location.href}",
-          "telephone": "2083021000",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "${address.streetAddress}",
-            "addressLocality": "${address.locality}",
-            "addressRegion": "${address.region}",
-            "postalCode": "${address.postalCode}",
-            "addressCountry": "${address.country}"
-          }
-        }
-      </script>
-      <!--End of automatically generated content-->` + head.innerHTML;
+if (blog) {
+  const blogHead = document.getElementById("detail-title").textContent;
+  const blogImg = document.getElementById("head-img").getAttribute("src");
+  const rawDate = document.getElementById("date-data").textContent;
+  const date = new Date(Date.parse(rawDate));
+  const schemaDate = formatDate(date);
+
+  head.innerHTML = /*html*/`
+  <!--Schema, OG and Twitter Cards automatically generated-->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "NewsArticle",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "${window.location.href}"
+    },
+    "headline": "${blogHead}",
+    "image": [
+      "${blogImg}"
+    ],
+    "datePublished": "${schemaDate}",
+    "dateModified": "${schemaDate}"
+  }
+  </script>
+  <!--End of automatically generated content-->` + head.innerHTML;
+} else {
+  head.innerHTML = /*html*/`
+  <!--Schema, OG and Twitter Cards automatically generated-->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "${pageName}",
+    "image": "${imageUrl}",
+    "@id": "${window.location.href}",
+    "url": "${window.location.href}",
+    "telephone": "2083021000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "${address.streetAddress}",
+      "addressLocality": "${address.locality}",
+      "addressRegion": "${address.region}",
+      "postalCode": "${address.postalCode}",
+      "addressCountry": "${address.country}"
+    }
+  }
+  </script>
+  <!--End of automatically generated content-->` + head.innerHTML;
 }
 
 function superTrim(initString) {
