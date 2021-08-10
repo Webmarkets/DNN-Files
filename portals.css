@@ -19,6 +19,16 @@
   display: none;
 }
 
+/* If it's an Obvio site then uncomment these two classes to make the mobile menu full screen */
+
+/* .mobilemenu-main.active .mobileclose {
+  left: 0 !important;
+}
+
+.mobilemenu-main .m-menu {
+  margin-left: 0 !important;
+} */
+
 /* 2) Global Styles ex. global typography, buttons, variables, anchor links, section backgrounds */
 
 /* DNN Theme Plugin Variables
