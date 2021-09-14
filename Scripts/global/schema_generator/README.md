@@ -1,19 +1,37 @@
 # Schema Generator
-## Description
-  This script generates a carousel with a given number of active slides, and allows user input or automatic rotating.
-## Installation
-  Add the following script tag to the global head tag of the site, as well as the open graph tags filled in with appropriate information:
 
-  ```html
-  <script defer src="https://cdn.jsdelivr.net/gh/Webmarkets/DNN-Files/Scripts/global/schema_generator/schema_generator.min.js"></script>
-  <meta property="business:contact_data:street_address" content="3327 N Eagle Rd #110-136">
-  <meta property="business:contact_data:locality" content="Meridian">
-  <meta property="business:contact_data:region" content="Idaho">
-  <meta property="business:contact_data:postal_code" content="83646">
-  <meta property="business:contact_data:country_name" content="US">
-  <meta property="og:image" content="http://dev.meridianwindowtint.com.dnn4less.net/Portals/0/Images/MWT-OpenGraphIMG.jpg">
-  <meta property="og:type" content="business.business">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="http://dev.meridianwindowtint.com.dnn4less.net/Portals/0/Images/MWT-OpenGraphIMG.jpg">
-  <meta name="twitter:image:alt" content="Meridian Window Tint residential and commercial window tinting">
-  ```
+## Description
+
+This script generates JSON Schema for the DNN site. There is a bit more setup involved here since you have to pass in the default Schema values into an object so please pay careful attention to not just copy and paste the template below.
+
+## Installation
+
+1. If you haven't already, add a `start.js` script to the site head tag and your Scripts folder.
+
+2. Once you have a `start.js` file you'll want to add the import below to the top of the file.
+
+```js
+import generateSchema from "./plugins/schema_generator.js";
+```
+
+3. Add the `generateSchema()` function with the template below
+
+```js
+ generateSchema({
+    imageUrl: "https://webmarkets.com/Portals/0/opengraphimage.jpg",
+    streetAddress: "5598 N Eagle Rd Suite 101",
+    locality: "Boise",
+    region: "ID",
+    postalCode: "83713",
+    country: "US",
+    businessName: "webmarkets",
+    logoUrl: "https://boiseent.com/Portals/0/Logo.png",
+    authorsShown: false
+  });
+```
+
+4. Fill out the information as needed for the business
+
+5. Save your changes and upload through FTP
+
+6. Reload the page and inspect to make sure a `<!--Schema, OG and Twitter Cards automatically generated-->` was added to the head tag with the scrip below it
