@@ -4,7 +4,7 @@
 
 This script generates JSON Schema for the DNN site. There is a bit more setup involved here since you have to pass in the default Schema values into an object so please pay careful attention to not just copy and paste the template below.
 
-## Installation
+## Script Setup
 
 1. If you haven't already, add a `start.js` script to the site head tag and your Scripts folder.
 
@@ -60,4 +60,25 @@ priorityStart();
 
 5. Save your changes and upload through FTP
 
-6. Reload the page and inspect to make sure a `<!--Schema, OG and Twitter Cards automatically generated-->` was added to the head tag with the scrip below it
+6. Reload the page and inspect to make sure a `<!--Schema, OG and Twitter Cards automatically generated-->` was added to the head tag with the script below it
+
+## DNN Blog Setup
+
+For sites with an active xBlog module follow the steps below to allow the schema generator to generate blog specific schema tags
+
+1. Navigate to the file in the following directory of the site
+
+```
+httpdocs/DesktopModules/DNNGo_xBlog/Skins/Classic/view_article_info.html
+```
+
+2. Add the div tag to the page. You can place it near the title tag of the blog post. Location isn't very important as long as it is inside the template.
+
+```html
+<span style="display:none;" id="date-data">$DataItem.PublishTime</span>
+```
+
+3. Save your changes and upload through FTP
+
+4. Reload the page and inspect to make sure a `<!--Schema, OG and Twitter Cards automatically generated-->` was added to the head tag with the script below it. This script should look different than the default schema and be pulling the publish date, modified date, blog title, etc.
+
