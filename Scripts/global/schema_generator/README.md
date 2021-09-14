@@ -14,7 +14,7 @@ This script generates JSON Schema for the DNN site. There is a bit more setup in
 import generateSchema from "./plugins/schema_generator.js";
 ```
 
-3. Add the `generateSchema()` function with the template below
+3. Add the `generateSchema()` function with the template below to the startUp fucntion in your start.js file
 
 ```js
  generateSchema({
@@ -28,6 +28,32 @@ import generateSchema from "./plugins/schema_generator.js";
     logoUrl: "https://boiseent.com/Portals/0/Logo.png",
     authorsShown: false
   });
+```
+
+Here is an example `start.js` file with the `generateSchema()` function
+
+```js
+import generateSchema from "./plugins/schema_generator.js";
+
+async function startUp() {
+  generateSchema({
+    imageUrl: "https://boiseent.com/Portals/0/opengraphimage.jpg",
+    streetAddress: "6094 W. Emerald Street",
+    locality: "Boise",
+    region: "ID",
+    postalCode: "83704",
+    country: "US",
+    businessName: "S. Albertson Dermatology",
+    logoUrl: "https://boiseent.com/Portals/0/Boise-ENT-Logo-NoBack-TM.png",
+    authorsShown: false
+  });
+}
+async function priorityStart() {
+
+}
+
+window.addEventListener("load", startUp);
+priorityStart();
 ```
 
 4. Fill out the information as needed for the business
