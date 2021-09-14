@@ -72,7 +72,7 @@ For sites with an active xBlog module follow the steps below to allow the schema
 httpdocs/DesktopModules/DNNGo_xBlog/Skins/Classic/view_article_info.html
 ```
 
-2. Add the div tag to the page. You can place it near the title tag of the blog post. Location isn't very important as long as it is inside the template.
+2. Add this span tag to the page. You can place it near the title tag of the blog post. Location isn't very important as long as it is inside the template.
 
 ```html
 <span style="display:none;" id="date-data">$DataItem.PublishTime</span>
