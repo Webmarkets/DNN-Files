@@ -2,12 +2,13 @@
  * 
  * @param {SchemaOptions} options 
  */
- export default function generateSchema(options) {
+export default function generateSchema (options) {
   let imageUrl = options.imageUrl;
   let blog = false;
+  let rawDate;
 
   if (document.getElementById("date-data") && document.getElementById("date-data").textContent) {
-    const rawDate = document.getElementById("date-data").textContent;
+    rawDate = document.getElementById("date-data").textContent;
     if (rawDate) {
       blog = true;
     }
@@ -19,7 +20,7 @@
    * 
    * @param {Date} date 
    */
-  function formatDate(date) {
+  function formatDate (date) {
     let year = date.getUTCFullYear().toString();
     let month = (date.getUTCMonth() + 1).toString();
     let day = date.getUTCDay().toString();
@@ -65,7 +66,7 @@
       "@type": "WebPage",
       "@id": "${window.location.href}"
     },
-    "headline": "${blogHead}",
+    "headline": "${superTrim(blogHead)}",
     "image": [
       "${blogImg}"
     ],
@@ -110,7 +111,7 @@
   </script>
   <!--End of automatically generated content-->` + document.head.innerHTML;
   }
-  function superTrim(initString) {
+  function superTrim (initString) {
     let newString = "";
     let trimIndexes = [];
     let start = -1;
@@ -119,10 +120,10 @@
       if (initString[i] != " " && start == -1) {
         start = i;
       } else if (initString[i] == " " && start != -1) {
-        trimIndexes.push({ start: start, end: i });
+        trimIndexes.push({start: start, end: i});
         start = -1;
       } else if (i == initString.length - 1 && start != -1) {
-        trimIndexes.push({ start: start, end: i + 1 });
+        trimIndexes.push({start: start, end: i + 1});
       }
     }
     trimIndexes.forEach(c => {
