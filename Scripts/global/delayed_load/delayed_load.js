@@ -10,8 +10,8 @@ const onIntersection = (lazyElems) => {
       lazyElem.target.setAttribute("src", lazyElem.target.getAttribute("lazy-src"));
     }
   }
-}
-function loadStart() {
+};
+function loadStart () {
   window.addEventListener("load", () => {
     pageLoaded = true;
     setBackgrounds();
@@ -25,7 +25,7 @@ function loadStart() {
     observer.observe(lazyElem);
   }
 }
-function canUseWebP() {
+function canUseWebP () {
   if (window.innerWidth < 1440) {
     attrSize = "-m";
     activeSize = "md";
@@ -44,75 +44,73 @@ function canUseWebP() {
     setPriorityImgs();
     setPriorityBackgrounds();
     _loadStart();
-  }
+  };
   elem.onerror = function () {
     webPLoaded = true;
     webP = false;
     setPriorityImgs();
     setPriorityBackgrounds();
     _loadStart();
-  }
+  };
 }
 
-async function _loadStart() {
+async function _loadStart () {
   if (pageLoaded && webPLoaded) {
     setImgs();
     setBackgrounds();
   }
 }
+function constructImgUrl (elem, isBackground) {
+  let initImgUrl = isBackground ? elem.getAttribute("bg-img") : elem.getAttribute("delay");
+  let query = "";
+  let version = elem.getAttribute("version");
+  if (version) {
+    query = "?v=" + version;
+  }
 
-async function setImgs() {
-  let delayedImgs = document.getElementsByTagName("img");
-  for (let i = 0; i < delayedImgs.length; i++) {
-    let newUrl = delayedImgs[i].getAttribute("delay");
-    if (newUrl) {
-      newUrl = newUrl.split(".");
-      let tempSize = "";
-      let web = delayedImgs[i].getAttribute("no-webp");
-      if (webP && !web) {
-        newUrl[1] = "webp";
+  if (initImgUrl) {
+    let factoredUrl = initImgUrl.split(".");
+    let tempSize = "";
+    let web = elem.getAttribute("no-webp");
+    if (webP && !web) {
+      factoredUrl[1] = "webp";
+    }
+    let sizes = elem.getAttribute("alt-size");
+    if ((activeSize || altActiveSize) && sizes) {
+      sizes = sizes.replace(",", "");
+      sizes = sizes.split(" ");
+      if (sizes.includes(activeSize) || sizes.includes(altActiveSize)) {
+        tempSize = attrSize;
       }
-      let sizes = delayedImgs[i].getAttribute("alt-size");
-      if ((activeSize || altActiveSize) && sizes) {
-        sizes = sizes.replace(",", "");
-        sizes = sizes.split(" ");
-        if (sizes.includes(activeSize) || sizes.includes(altActiveSize)) {
-          tempSize = attrSize;
-        }
-      }
-      newUrl = `${newUrl[0]}${tempSize}.${newUrl[1]}`;
-      delayedImgs[i].src = newUrl;
+    }
+    const finalUrl = `${factoredUrl[0]}${tempSize}.${factoredUrl[1]}${query}`;
+    if (isBackground) {
+      elem.setAttribute("style", `background-image: url('${finalUrl}${query}');`);
+
+    } else {
+      elem.src = finalUrl;
     }
   }
+
+
 }
-async function setPriorityImgs() {
+
+async function setImgs () {
+  let delayedImgs = document.getElementsByTagName("img");
+  for (let i = 0; i < delayedImgs.length; i++) {
+    constructImgUrl(delayedImgs[i], false);
+  }
+}
+async function setPriorityImgs () {
   let delayedImgs = document.getElementsByTagName("img");
   for (let i = 0; i < delayedImgs.length; i++) {
 
     if (delayedImgs[i].getAttribute("priority")) {
-      let newUrl = delayedImgs[i].getAttribute("delay");
-      if (newUrl) {
-        newUrl = newUrl.split(".");
-        let tempSize = "";
-        let web = delayedImgs[i].getAttribute("no-webp");
-        if (webP && !web) {
-          newUrl[1] = "webp";
-        }
-        let sizes = delayedImgs[i].getAttribute("alt-size");
-        if ((activeSize || altActiveSize) && sizes) {
-          sizes = sizes.replace(",", "");
-          sizes = sizes.split(" ");
-          if (sizes.includes(activeSize) || sizes.includes(altActiveSize)) {
-            tempSize = attrSize;
-          }
-        }
-        newUrl = `${newUrl[0]}${tempSize}.${newUrl[1]}`;
-        delayedImgs[i].src = newUrl;
-      }
+      constructImgUrl(delayedImgs[i], false);
     }
   }
 }
-function setLinks() {
+function setLinks () {
   let links = [];
   let head = document.getElementsByTagName('head')[0];
   for (let i = 0; i < links.length; i++) {
@@ -124,53 +122,18 @@ function setLinks() {
     head.parentNode.insertBefore(cssLink, head);
   }
 }
-function setBackgrounds() {
+function setBackgrounds () {
   let imgBacks = document.getElementsByClassName("img-back");
   for (let i = 0; i < imgBacks.length; i++) {
-    let newBgUrl = imgBacks[i].getAttribute("bg-img");
-    if (newBgUrl) {
-      newBgUrl = newBgUrl.split(".");
-      let tempSize = "";
-      let web = imgBacks[i].getAttribute("no-webp");
-      if (webP && !web) {
-        newBgUrl[1] = "webp";
-      }
-      let sizes = imgBacks[i].getAttribute("alt-size");
-      if ((activeSize || altActiveSize) && sizes) {
-        sizes = sizes.replace(",", "");
-        sizes = sizes.split(" ");
-        if (sizes.includes(activeSize) || sizes.includes(altActiveSize)) {
-          tempSize = attrSize;
-        }
-      }
-      newBgUrl = `${newBgUrl[0]}${tempSize}.${newBgUrl[1]}`;
-      imgBacks[i].setAttribute("style", `background-image: url('${newBgUrl}');`);
-    }
+
+    constructImgUrl(imgBacks[i], true);
   }
 }
-function setPriorityBackgrounds() {
+function setPriorityBackgrounds () {
   let imgBacks = document.getElementsByClassName("img-back");
   for (let i = 0; i < imgBacks.length; i++) {
     if (imgBacks[i].getAttribute("priority")) {
-      let newBgUrl = imgBacks[i].getAttribute("bg-img");
-      if (newBgUrl) {
-        newBgUrl = newBgUrl.split(".");
-        let tempSize = "";
-        let web = imgBacks[i].getAttribute("no-webp");
-        if (webP && !web) {
-          newBgUrl[1] = "webp";
-        }
-        let sizes = imgBacks[i].getAttribute("alt-size");
-        if ((activeSize || altActiveSize) && sizes) {
-          sizes = sizes.replace(",", "");
-          sizes = sizes.split(" ");
-          if (sizes.includes(activeSize) || sizes.includes(altActiveSize)) {
-            tempSize = attrSize;
-          }
-        }
-        newBgUrl = `${newBgUrl[0]}${tempSize}.${newBgUrl[1]}`;
-        imgBacks[i].setAttribute("style", `background-image: url('${newBgUrl}');`);
-      }
+      constructImgUrl(imgBacks[i], true);
     }
   }
 }
