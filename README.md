@@ -1,12 +1,13 @@
 # DNN-Starter-Files
 
-This is the repo for all of the starter files we need for DNN. 
+This is the repo for all of the starter files we need for DNN.
 
 ### File Structure:
+
 ```
 project
 │   README.md
-│   portals.css   
+│   portals.css
 │
 └───Scripts
 │   │
@@ -17,6 +18,8 @@ project
 │   │   │       start.js
 │   │   └───delayed_load
 │   │   │       delayed_load.js
+│   │   count_up
+│   │   │       count_up.js
 │   │   └───schema_generator
 │   │   │       schema_generator.js
 │   │   │       template.html

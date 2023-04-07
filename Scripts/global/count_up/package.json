@@ -1,0 +1,11 @@
+{
+  "name": "count_up",
+  "version": "1.0.0",
+  "description": "This script animates numbers through intersection observers and CSS.",
+  "main": "count_up.js",
+  "scripts": {
+    "test": "start"
+  },
+  "author": "Webmarkets",
+  "license": "ISC"
+}
