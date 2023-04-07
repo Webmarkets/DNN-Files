@@ -1,4 +1,4 @@
-# Delayed Loading Script Instructions
+# Count Up Script Instructions
 
 ## Description
 
