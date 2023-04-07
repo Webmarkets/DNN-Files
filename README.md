@@ -18,7 +18,7 @@ project
 │   │   │       start.js
 │   │   └───delayed_load
 │   │   │       delayed_load.js
-│   │   count_up
+│   │   └───count_up
 │   │   │       count_up.js
 │   │   └───schema_generator
 │   │   │       schema_generator.js
