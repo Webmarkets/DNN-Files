@@ -12,7 +12,7 @@ This script animates numbers through intersection observers and CSS.
 2. Open the _Default.aspx_ file with your editor of choice. Find the closing `<body>` tag, and just above it place the script tag for this module.
    ### Tag:
    ```html
-   <script src="https://cdn.jsdelivr.net/gh/Webmarkets/DNN-Files/Scripts/global/count_up/count_up.min.js"></script>
+   <script type="module" src="https://cdn.jsdelivr.net/gh/Webmarkets/DNN-Files/Scripts/global/count_up/count_up.min.js"></script>
    ```
    ### Example:
    ```html
