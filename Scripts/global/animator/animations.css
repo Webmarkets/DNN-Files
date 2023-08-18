@@ -1,0 +1,71 @@
+/* Counting code */
+@property --num {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.counter {
+  transition: --num 2s ease-out;
+  counter-set: num var(--num);
+}
+
+.counter::before {
+  content: counter(num);
+}
+
+.count_to_100.counting {
+  --num: 100;
+}
+
+.count_to_1000.counting {
+  --num: 1000;
+}
+
+/* Radial Phase-In code */
+@keyframes phase-in {
+  from {
+    clip-path: circle(0%);
+  }
+
+  to {
+    clip-path: circle(60%);
+  }
+}
+
+.radial-phase-in {
+  visibility: hidden;
+}
+
+.radial-phase-in.phasing {
+  visibility: visible;
+  animation-name: phase-in;
+  animation-duration: 8s;
+}
+
+/* Float-Up code */
+@keyframes float-up {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.float-up {
+  visibility: hidden;
+}
+
+.float-up.floating {
+  visibility: visible;
+  animation-name: float-up;
+  animation-duration: 3s;
+}
+
+.float-up.floating.slow-float {
+  animation-duration: 8s;
+}

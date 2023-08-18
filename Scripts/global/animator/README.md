@@ -25,16 +25,19 @@ This script animates numbers through intersection observers and CSS.
 
 ### Set up CSS
 
-3. Make sure to add the CSS included in `counter.css`.
+This component uses JS to initiate CSS animations on a per-element basis. It doesn't matter if you intend to use the animations included in this repository, or if you're using your own CSS animations.
+Included in this repository are three animations: Floating, Radial Phase-In, and Count-Up. See `animations.css` for the code.
+
+3. Make note of which classes are used to initate the CSS animation. In the case of the Count-Up animation, this class is `counting`.
 4. Customize the class `.count_to_[number]` to include the value you'd like your HTML to animate up to in both the class name and variable `--num`'s value.
 
-   - Example: To make an element count up to 100, make the following changes:
-   - ```css
-     .count_to_100.counting {
-       --num: 100;
-     }
-     ```
-   - This should be done for each number you'd like to animate.
+- Example: To make an element count up to 100, make the following changes:
+- ```css
+  .count_to_100.counting {
+    --num: 100;
+  }
+  ```
+- This should be done for each number you'd like to animate.
 
 5. Following the previous example, your CSS should look something like after setting up each number:
 
@@ -68,11 +71,13 @@ This script animates numbers through intersection observers and CSS.
 
 Once the plugin is installed, implementation is handled case-by-case for each number. Please reference step #4 in Installation for CSS changes.
 
-1. It's best to treat the counting element as inline text. In the HTML example below, it's simply a `<span>` tag with a couple classes applied to it.
+1.
 
-   - Add the classes `counter` and `count_to_[number]`, substituting [number] with the integer value you wish to use.
+1.  It's best to treat the counting element as inline text. In the HTML example below, it's simply a `<span>` tag with a couple classes applied to it.
 
-2. If you wish to add a suffix, you can include it within the element like so:
+    - Add the classes `counter` and `count_to_[number]`, substituting [number] with the integer value you wish to use.
+
+1.  If you wish to add a suffix, you can include it within the element like so:
 
 - ```html
   <span class="count_to_10">+</span>
