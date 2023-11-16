@@ -10,20 +10,6 @@ function loadStart() {
   for (let i = 0; i < carousels.length; i++) {
     new Carousel(carousels[i], i);
   }
-  testWebM();
-}
-// NOTE: I'll likely deprecate this to the delayed load script once Totally Boise is updated
-function testWebM() {
-  let videos = document.getElementsByTagName("video");
-  if (videos[0].canPlayType("video/webm")) {
-    for (let i = 0; i < videos.length; i++) {
-      let url = videos[i].getAttribute("src");
-      let newUrl = url.split(".");
-      newUrl[1] = "webm";
-      url = newUrl[0] + "." + newUrl[1];
-      videos[i].setAttribute("src", url);
-    }
-  }
 }
 
 class Carousel {
