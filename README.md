@@ -34,6 +34,19 @@ project
 │   │   │       popup.js
 │   │   └───text_slider
 │   │   │       text_slider.js
+└───templates
+│   │
+│   └───dnngo_form-email
+│   │   │
+|   │   └───formbuilder
+│   │   │       user-email.html
+│   │   │       webmarkets-admin_email.html
+│   │   │       wm_medical-admin_email.html
+|   │   └───powerforms
+│   │   │       user-email.html
+│   │   │       webmarkets-admin_email.html
+│   │   │       wm_medical-admin_email.html
+
 ```
 
 ### Note: each plugin has it's own README.md for instructions on how to use it
@@ -46,3 +59,9 @@ project
 - [Carousel](https://github.com/Webmarkets/DNN-Files/tree/main/Scripts/plugins/carousel)
 - [Popup](https://github.com/Webmarkets/DNN-Files/tree/main/Scripts/plugins/popup)
 - [Text Slider](https://github.com/Webmarkets/DNN-Files/tree/main/Scripts/plugins/text_slider)
+
+## Template Files
+
+This repository also contains templates for DNN Form plugins.
+
+### [Email Template README](https://github.com/Webmarkets/DNN-Files/tree/main/templates/dnngo_form-email)
